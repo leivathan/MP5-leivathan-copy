@@ -46,7 +46,6 @@ processTestResources {
     exclude '**/*.js'
 }
 
-
 defaultTasks 'grade'
 
 // vim: ts=4:sw=4:et:ft=groovy
