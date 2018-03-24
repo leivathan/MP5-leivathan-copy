@@ -18,6 +18,9 @@ public class SingleLL {
      * Internal class storing a node in our SingleLL.
      */
     public final class Node {
+        /**
+         * The integer value stored on the node.
+         */
         private int value;
 
         /**
@@ -86,6 +89,34 @@ public class SingleLL {
         return start;
     }
 
+    /**
+     *
+     * @param newValue the new value to insert
+     * @param position the position to insert it in
+     * @return true if succeeded, false if the position was invalid (less than 0 or off the end)
+     */
+    public boolean insert(final int newValue, final int position) {
+        return true;
+    }
+
+    /**
+     *
+     * @param position the position to remove
+     * @return true if removal succeeded, false if it failed
+     */
+    public boolean remove(final int position) {
+        return true;
+    }
+
+    /**
+     * Swap two values in the list.
+     * @param firstPosition the first value to swap
+     * @param secondPosition the second value to swap
+     * @return true if the swap succeeded, false if it failed
+     */
+    public boolean swap(final int firstPosition, final int secondPosition) {
+        return true;
+    }
     /**
      * Add a new value to the front of the list.
      * <p>

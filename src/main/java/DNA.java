@@ -36,4 +36,15 @@ public class DNA {
     public DNA(final String setSequence) {
         sequence = setSequence.toUpperCase();
     }
+
+    /**
+     *
+     * @param firstSequence a first DNA sequence to compare
+     * @param secondSequence a second one.
+     * @return the longest common sequence of base pairs between the two
+     */
+    public static DNA getLongestCommonSubsequence(final DNA firstSequence,
+                                                  final DNA secondSequence) {
+        return firstSequence;
+    }
 }
