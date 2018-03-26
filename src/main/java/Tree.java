@@ -80,14 +80,14 @@ public class Tree {
         if (this.search(newValue) != null) {
             return false;
         } else {
-            if (newValue > this.value) {
+            if (newValue < this.value) {
                 if (this.left == null) {
                     this.left = new Tree(newValue, this);
                     return true;
                 } else {
                     return this.left.insert(newValue);
                 }
-            } else if (newValue < this.value) {
+            } else if (newValue > this.value) {
                 if (this.right == null) {
                     this.right = new Tree(newValue, this);
                     return true;
@@ -109,9 +109,9 @@ public class Tree {
         if (this.value == searchValue) {
             //exist = true;
             return this;
-        } else if (left != null) {
+        } else if (this.value > searchValue && left != null) {
             return left.search(searchValue);
-        } else if (right != null) {
+        } else if (this.value < searchValue && right != null) {
             return right.search(searchValue);
         }
         return null;
