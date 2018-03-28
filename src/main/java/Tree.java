@@ -31,13 +31,22 @@ public class Tree {
      */
     private Random random = new Random();
     /**
-     * The minimum.
+     * The depth of the tree.
      */
-    private int min;
+    private int depth;
     /**
-     * The maximum.
+     * A thing.
      */
-    private int max;
+    private static int dep;
+    /**
+     * The number of descendants.
+     */
+    private int descend;
+    /**
+     * Another thing.
+     */
+    private static int desc = 0;
+
 
     /**
      * A constructor to set just the value on the tree.
@@ -122,7 +131,11 @@ public class Tree {
      * @return the minimum value
      */
     public int minimum() {
-        return min;
+        if (left == null) {
+            return this.value;
+        } else {
+            return left.minimum();
+        }
     }
 
     /**
@@ -130,7 +143,11 @@ public class Tree {
      * @return the maximum value
      */
     public int maximum() {
-        return max;
+        if (right == null) {
+            return this.value;
+        } else {
+            return right.maximum();
+        }
     }
 
     /**
@@ -138,7 +155,15 @@ public class Tree {
      * @return the depth of this node relative to the root
      */
     public int depth() {
-        return 1;
+        if (this.parent == null) {
+            depth = dep;
+            dep = 0;
+            return depth;
+        } else {
+            dep++;
+            return parent.depth();
+        }
+
     }
 
     /**
@@ -146,6 +171,17 @@ public class Tree {
      * @return the number of nodes below this node in the tree
      */
     public int descendants() {
+        if (this.left == null && this.right == null) {
+            descend = desc;
+            desc = 0;
+            return descend;
+        } else if (this.left != null) {
+            desc++;
+            return this.left.descendants();
+        } else if (this.right != null) {
+            desc++;
+            return this.right.descendants();
+        }
         return 1;
     }
 }

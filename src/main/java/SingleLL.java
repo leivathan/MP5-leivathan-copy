@@ -90,12 +90,36 @@ public class SingleLL {
     }
 
     /**
+     * A private function that works to check positioning and get easy positions.
+     * @param position the position to find
+     * @return the node at that position
+     */
+    private Node seek(final int position) {
+        Node begin = start;
+        if (position < 0) {
+            return null;
+        }
+        for (int i = 0; i < position; i++) {
+            if (begin == null) {
+                return null;
+            }
+            begin = begin.getNext();
+        }
+        return begin;
+    }
+
+    /**
      *
      * @param newValue the new value to insert
      * @param position the position to insert it in
      * @return true if succeeded, false if the position was invalid (less than 0 or off the end)
      */
     public boolean insert(final int newValue, final int position) {
+        if (seek(position) == null) {
+            return false;
+        }
+        Node boi = new Node(newValue, seek(position));
+        seek(position - 1).setNext(boi);
         return true;
     }
 
