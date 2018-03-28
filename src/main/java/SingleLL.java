@@ -119,6 +119,10 @@ public class SingleLL {
             return false;
         }
         Node boi = new Node(newValue, seek(position));
+        if (position == 0) {
+            start = boi;
+            return true;
+        }
         seek(position - 1).setNext(boi);
         return true;
     }
@@ -129,6 +133,18 @@ public class SingleLL {
      * @return true if removal succeeded, false if it failed
      */
     public boolean remove(final int position) {
+        if (seek(position) == null) {
+            return false;
+        }
+        if (position == 0) {
+            start = seek(1);
+            return true;
+        }
+        if (seek(position) != null && seek(position + 1) == null) {
+            seek(position - 1).setNext(null);
+            return true;
+        }
+        seek(position - 1).setNext(seek(position + 1));
         return true;
     }
 
@@ -139,6 +155,13 @@ public class SingleLL {
      * @return true if the swap succeeded, false if it failed
      */
     public boolean swap(final int firstPosition, final int secondPosition) {
+        if (seek(firstPosition) == null || seek(secondPosition) == null) {
+            return false;
+        }
+        int first = seek(firstPosition).getValue();
+        int second = seek(secondPosition).getValue();
+        seek(firstPosition).setValue(second);
+        seek(secondPosition).setValue(first);
         return true;
     }
     /**

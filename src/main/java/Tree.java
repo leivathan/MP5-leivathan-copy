@@ -172,16 +172,14 @@ public class Tree {
      */
     public int descendants() {
         if (this.left == null && this.right == null) {
-            descend = desc;
-            desc = 0;
-            return descend;
+            return 0;
+        } else if (this.left != null && this.right != null) {
+            return 1 + 1 + this.left.descendants() + this.right.descendants();
         } else if (this.left != null) {
-            desc++;
-            return this.left.descendants();
+            return 1 + this.left.descendants();
         } else if (this.right != null) {
-            desc++;
-            return this.right.descendants();
+            return 1 + this.right.descendants();
         }
-        return 1;
+        return 0;
     }
 }
