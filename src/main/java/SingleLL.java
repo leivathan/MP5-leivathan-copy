@@ -115,14 +115,29 @@ public class SingleLL {
      * @return true if succeeded, false if the position was invalid (less than 0 or off the end)
      */
     public boolean insert(final int newValue, final int position) {
+        Node begin = new Node(newValue, null);
+        if (start == null) {
+            start = begin;
+            return true;
+        }
+        Node end = new Node(newValue, null);
+        if (seek(position) == null && seek(position - 1) != null) {
+            seek(position - 1).setNext(end);
+            return true;
+        }
         if (seek(position) == null) {
             return false;
         }
         Node boi = new Node(newValue, seek(position));
+//        Node end = new Node(newValue, null);
         if (position == 0) {
             start = boi;
             return true;
         }
+//        if (seek(position) == null && seek(position - 1) != null) {
+//            seek(position).setNext(end);
+//            return true;
+//        }
         seek(position - 1).setNext(boi);
         return true;
     }
